@@ -1,46 +1,29 @@
 /**
- * @name AssignBadges
- * @version 1.0.29
- * @description Allows you to locally assign badges to users through the user context menu.
- * @author QWERT
- * @source https://github.com/QWERTxD/BetterDiscordPlugins/tree/main/AssignBadges
- * @updateUrl https://raw.githubusercontent.com/QWERTxD/BetterDiscordPlugins/main/AssignBadges/AssignBadges.plugin.js
+ * @name PluginBadgeBD
+ * @version 1.0
+ * @description Permet d'ajouter les différents badges présent sur discord à soit même ou aux autres (visible uniquement par vous) 
+ * @author Hego
+ * @source https://github.com/OriginalCoca/PluginBadgeBD
+ * @updateUrl https://github.com/OriginalCoca/PluginBadgeBD/blob/main/AssignBadges.plugin.js
  */
 /*@cc_on
 @if (@_jscript)
-    
-    // Offer to self-install for clueless users that try to run this directly.
-    var shell = WScript.CreateObject("WScript.Shell");
-    var fs = new ActiveXObject("Scripting.FileSystemObject");
-    var pathPlugins = shell.ExpandEnvironmentStrings("%APPDATA%\BetterDiscord\plugins");
-    var pathSelf = WScript.ScriptFullName;
-    // Put the user at ease by addressing them in the first person
-    shell.Popup("It looks like you've mistakenly tried to run me directly. \n(Don't do that!)", 0, "I'm a plugin for BetterDiscord", 0x30);
-    if (fs.GetParentFolderName(pathSelf) === fs.GetAbsolutePathName(pathPlugins)) {
-        shell.Popup("I'm in the correct folder already.", 0, "I'm already installed", 0x40);
-    } else if (!fs.FolderExists(pathPlugins)) {
-        shell.Popup("I can't find the BetterDiscord plugins folder.\nAre you sure it's even installed?", 0, "Can't install myself", 0x10);
-    } else if (shell.Popup("Should I copy myself to BetterDiscord's plugins folder for you?", 0, "Do you need some help?", 0x34) === 6) {
-        fs.CopyFile(pathSelf, fs.BuildPath(pathPlugins, fs.GetFileName(pathSelf)), true);
-        // Show the user where to put plugins in the future
-        shell.Exec("explorer " + pathPlugins);
-        shell.Popup("I'm installed!", 0, "Successfully installed", 0x40);
-    }
+    //
     WScript.Quit();
 @else@*/
 /* Generated Code */
 const config = {
 	"info": {
-		"name": "AssignBadges",
-		"version": "1.0.29",
-		"description": "Allows you to locally assign badges to users through the user context menu.",
+		"name": "PluginBadgeBD",
+		"version": "1.0",
+		"description": "Permet d'ajouter les différents badges présent sur discord à soit même ou aux autres (visible uniquement par vous)",
 		"authors": [{
-			"name": "QWERT",
-			"discord_id": "678556376640913408",
-			"github_username": "QWERTxD"
+			"name": "Hego",
+			"discord_id": "1001147047782649987",
+			"github_username": "OriginalCoca"
 		}],
-		"github": "https://github.com/QWERTxD/BetterDiscordPlugins/tree/main/AssignBadges",
-		"github_raw": "https://raw.githubusercontent.com/QWERTxD/BetterDiscordPlugins/main/AssignBadges/AssignBadges.plugin.js"
+		"github": "https://github.com/OriginalCoca/PluginBadgeBD",
+		"github_raw": "https://github.com/OriginalCoca/PluginBadgeBD/blob/main/AssignBadges.plugin.js"
 	},
 	"build": {
 		"zlibrary": true,
@@ -59,8 +42,8 @@ const config = {
 		"type": "fixed",
 		"title": "Fixes",
 		"items": [
-			"Fixed the ContextMenus",
-			"Fixed some issues with the Bot Tag"
+			"ContextMenus fixé",
+			"Correction de quelques problèmes avec le tag des bots"
 		]
 	}]
 };
@@ -346,57 +329,57 @@ function buildPlugin([BasePlugin, PluginApi]) {
 			}, {
 				id: "PARTNER",
 				value: UserFlags["PARTNER"],
-				name: "Partnered Server Owner",
+				name: "Propriétaire de serveur partenaire",
 				key: BadgeKeys["PARTNER"]
 			}, {
 				id: "HYPESQUAD",
 				value: UserFlags["HYPESQUAD"],
-				name: "HypeSquad Events",
+				name: "Évènements HypeSquad",
 				key: BadgeKeys["HYPESQUAD"]
 			}, {
 				id: "HYPESQUAD_ONLINE_HOUSE_1",
 				value: UserFlags["HYPESQUAD_ONLINE_HOUSE_1"],
-				name: "House Bravery",
+				name: "Maison Bravery",
 				key: BadgeKeys["HYPESQUAD_ONLINE_HOUSE_1"]
 			}, {
 				id: "HYPESQUAD_ONLINE_HOUSE_2",
 				value: UserFlags["HYPESQUAD_ONLINE_HOUSE_2"],
-				name: "House Brilliance",
+				name: "Maison Brilliance",
 				key: BadgeKeys["HYPESQUAD_ONLINE_HOUSE_2"]
 			}, {
 				id: "HYPESQUAD_ONLINE_HOUSE_3",
 				value: UserFlags["HYPESQUAD_ONLINE_HOUSE_3"],
-				name: "House Balance",
+				name: "Maison Balance",
 				key: BadgeKeys["HYPESQUAD_ONLINE_HOUSE_3"]
 			}, {
 				id: "EARLY_VERIFIED_BOT",
 				value: 0,
-				name: "Verified Bot",
+				name: "Bot Vérifié",
 				key: BadgeKeys["VERIFIED_BOT"]
 			}, {
 				id: "BUG_HUNTER_LEVEL_1",
 				value: UserFlags["BUG_HUNTER_LEVEL_1"],
-				name: "Bug Hunter Level 1",
+				name: "Bug Hunter Niveau 1",
 				key: BadgeKeys["BUG_HUNTER_LEVEL_1"]
 			}, {
 				id: "BUG_HUNTER_LEVEL_2",
 				value: UserFlags["BUG_HUNTER_LEVEL_2"],
-				name: "Bug Hunter Level 2",
+				name: "Bug Hunter Niveau 2",
 				key: BadgeKeys["BUG_HUNTER_LEVEL_2"]
 			}, {
 				id: "EARLY_SUPPORTER",
 				value: UserFlags["PREMIUM_EARLY_SUPPORTER"],
-				name: "Early Supporter",
+				name: "Soutien de la première heure",
 				key: BadgeKeys["EARLY_SUPPORTER"]
 			}, {
 				id: "EARLY_VERIFIED_DEVELOPER",
 				value: UserFlags["VERIFIED_DEVELOPER"],
-				name: "Early Verified Bot Developer",
+				name: "Développeur de bot vérifié de la première heure",
 				key: BadgeKeys["EARLY_VERIFIED_DEVELOPER"]
 			}, {
 				id: "CERTIFIED_MODERATOR",
 				value: UserFlags["CERTIFIED_MODERATOR"],
-				name: "Discord Certified Moderator",
+				name: "Modérateur discord certifié",
 				key: BadgeKeys["CERTIFIED_MODERATOR"]
 			}, {
 				id: "PREMIUM",
@@ -440,47 +423,47 @@ function buildPlugin([BasePlugin, PluginApi]) {
 			const boosts = [{
 				id: "boost1",
 				value: 0 << 0,
-				name: "Booster - 1 Month",
+				name: "Booster - 1 Mois",
 				time: 1.04
 			}, {
 				id: "boost2",
 				value: 0 << 0,
-				name: "Booster - 2 Months",
+				name: "Booster - 2 Mois",
 				time: 2.04
 			}, {
 				id: "boost3",
 				value: 0 << 0,
-				name: "Booster - 3 Months",
+				name: "Booster - 3 Mois",
 				time: 3.04
 			}, {
 				id: "boost4",
 				value: 0 << 0,
-				name: "Booster - 6 Months",
+				name: "Booster - 6 Mois",
 				time: 6.04
 			}, {
 				id: "boost5",
 				value: 0 << 0,
-				name: "Booster - 9 Months",
+				name: "Booster - 9 Mois",
 				time: 9.04
 			}, {
 				id: "boost6",
 				value: 0 << 0,
-				name: "Booster - 1 Year",
+				name: "Booster - 1 An",
 				time: 12.04
 			}, {
 				id: "boost7",
 				value: 0 << 0,
-				name: "Booster - 1 Year and 3 Months",
+				name: "Booster - 1 An et 3 Mois",
 				time: 15.04
 			}, {
 				id: "boost8",
 				value: 0 << 0,
-				name: "Booster - 1 Year and 6 Months",
+				name: "Booster - 1 An et 6 Mois",
 				time: 18.04
 			}, {
 				id: "boost9",
 				value: 0 << 0,
-				name: "Booster - 2 Years",
+				name: "Booster - 2 Ans",
 				time: 24.04
 			}];
 			const BotTag = external_PluginApi_namespaceObject.WebpackModules.getByProps("BotTagTypes").default;
@@ -574,7 +557,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 								className: memberlistClasses.botTag
 							});
 						} catch (error) {
-							console.error("Error while patching MemberListItem:", error);
+							console.error("Erreur lors du patch du MemberListItem:", error);
 						}
 					}));
 					MemberListItem.forceUpdateAll();
@@ -651,7 +634,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 								action: () => {
 									delete settings[props.user.id]?.boost;
 									this.saveSettings(settings);
-									external_PluginApi_namespaceObject.Toasts.success(`Successfully cleared boost preferences for <strong>${props.user}</strong>!`);
+									external_PluginApi_namespaceObject.Toasts.success(`Préférence de boost rafraichi pour <strong>${props.user}</strong>!`);
 								}
 							}))]), React.createElement(contextmenu_namespaceObject.MenuGroup, null, React.createElement(contextmenu_namespaceObject.MenuItem, {
 								color: "colorDanger",
@@ -661,7 +644,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 									delete settings[props.user.id];
 									this.saveSettings(settings);
 									settings[props.user.id] = {};
-									external_PluginApi_namespaceObject.Toasts.success(`Successfully cleared preferences for <strong>${props.user}</strong>!`);
+									external_PluginApi_namespaceObject.Toasts.success(`Préférence de boost rafraichi pour <strong>${props.user}</strong>!`);
 								}
 							}))]
 						});
@@ -787,15 +770,15 @@ module.exports = window.hasOwnProperty("ZeresPluginLibrary") ?
 			return config.info.authors.map(a => a.name).join(", ");
 		}
 		getDescription() {
-			return `${config.info.description}. __**ZeresPluginLibrary was not found! This plugin will not work!**__`;
+			return `${config.info.description}. __**ZeresPluginLibrary n'a pas été trouvé! Ce plugin ne marchera pas!**__`;
 		}
 		getVersion() {
 			return config.info.version;
 		}
 		load() {
 			BdApi.showConfirmationModal(
-				"Library plugin is needed",
-				[`The library plugin needed for ${config.info.name} is missing. Please click Download to install it.`], {
+				"Plugin Library nécessaire pour le fonctionnement.",
+				[`Le plugin nécessaire pour ${config.info.name} est manquant. Merci de cliquer pour l'installer.`], {
 					confirmText: "Download",
 					cancelText: "Cancel",
 					onConfirm: () => {
